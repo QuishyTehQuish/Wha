@@ -1,0 +1,32 @@
+import random
+
+cuisines = {
+    1: ["Pasta", "Food2", "Fish"],
+    2: ["Bean", "Foodm"],
+    3: ["Rice", "Rice 3"],
+    4: ["Sushi"]
+}
+
+all_cuisine_choices = [0, 1, 2, 3, 4]
+
+while True:
+    food_choice = int(input("Choose: 0 for All, 1 for Italian, 2 for Mexican, 3 for Chinese, 4 for Japanese: "))
+    
+    if food_choice in cuisines:
+        chosen_cuisine = cuisines[food_choice]
+    else:
+        chosen_cuisine = random.choice(list(cuisines.values()))
+
+    rand_food = random.choice(chosen_cuisine)
+    print(rand_food)
+
+    food_acceptance = input('Do you accept? y/n')
+    if food_acceptance.lower() == 'y':
+    
+        print(f"Your chosen food is {rand_food}!")
+        break
+
+
+
+
+

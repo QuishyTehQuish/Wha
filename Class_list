@@ -1,0 +1,11 @@
+
+
+#Class  skill_template:
+
+class skill_1:
+    skill_name = "skill 1"
+    skill_power = 1
+
+class skill_2:
+    skill_name = "skill 2"
+    skill_power = 2
