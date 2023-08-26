@@ -4,7 +4,6 @@ roles = {
         "skill": ["Assassinate"],
         "attributes": {
             "maxhp": 11,
-            "hp": 11,
             "attack": 11,
             "defence": 11,
             "speed": 11
@@ -15,7 +14,6 @@ roles = {
         "skill": ["Sneak"],
         "attributes": {
             "maxhp": 7,
-            "hp": 5,
             "attack": 5,
             "defence": 1,
             "speed": 5
@@ -26,7 +24,6 @@ roles = {
         "skill": ["Smoke_Screen"],
         "attributes": {
             "maxhp": 10,
-            "hp": 10,
             "attack": 10,
             "defence": 10,
             "speed": 5
@@ -64,16 +61,10 @@ def player_choice():
     if role in roles:
         role_data = roles[role]
         print(f"You've selected {role_data['name']}")
-        skill = role_data["skill"]
-        attributes = role_data["attributes"]
-        maxhp = attributes["maxhp"]
-        hp = attributes["hp"]
-        attack = attributes["attack"]
-        defence = attributes["defence"]
-        speed = attributes["speed"]
         print(role_data)
+        return role
     else:
         print("Do it right, retard!")
         player_choice()
 
-player_choice()
+#player_choice()

@@ -1,107 +1,67 @@
-# wobin based text adventure
-import os
-
-
-class play:
-    name = "new play"
+# new wobin based text adventure
+import random
 
 
 import Class_list
 
-#from Class import player_choice
 
-
-quit()
-
-
-
-# start game, sets var
-import random
-print ('wobin adventure v.0.1')
-print ('what is your name')
-input()
-print ('your name is wobin')
-print ('these are your stats')
-maxhp = 100
-hp = 100
-attack = 10
-defence = 10
-speed = 5
-print('hp= '+str(hp))
-print('atk= '+str(attack))
-print('def= '+str(defence))
-print('spd= '+str(speed))
-print()
-
-ename = ''
-emaxhp = 1
-ehp =1
-eattack = 1
-edefence = 1
-espeed = 1
-
-
-
-
-
-
-#enemy code
-def enemy():
-    # slime
-    ename = 'slime'
-    emaxhp = 30 #big slime
-    ehp = 30
-    eattack = 5
-    edefence = 5
-    espeed = 5
+def make_a_character():
+    name_new = input("What's your name?")
+    import Role_list
+    job_choice = Role_list.player_choice()
+    R = Role_list
+    global player
+    player = Class_list.player(name_new,R.roles[job_choice]["name"],R.roles[job_choice]["attributes"]['maxhp'])
     
 
-#combat script
+import Enemy_list
+
+def make_an_enemy():
+    keylist = Enemy_list.enemy_data.keys()
+    new_enemy = random.randrange(0,len(Enemy_list.enemy_data))
+    global enemy
+    print('keylist')
+    print(keylist)
+    print('new_enemy')
+    print(new_enemy)
+    enemy = keylist[new_enemy]
+    #enemy = Class_list.enemy(new_enemy['e_name'],new_enemy['hp_max'],new_enemy['atk'],new_enemy['dfp'])
+    #print (enemy.e_name)
+make_an_enemy()
+
+def make_an_item():
+    pass
+
+
+def make_an_event():
+    event_list = ['battle','no_event']
+    print(f"{player.p_name} is adventuring")
+    random_event = random.randrange(0,len(event_list))
+    match event_list[random_event]:
+        case 'battle':
+            print("Conflict!!!")
+            battle()
+        case 'no_event':
+            print("There's nothing here.")
+            input("enter to continue")
+
+
+
 def battle():
-    enemy()
-    global hp
-    print('wobin ran into '+ename)
-    combat = True
-    while combat == True:
-        print('1 attack')
-        print('2 defend')
-        print('3 spell')
-        print('4 run away')
-        print('5 status')
-        action = input()
-        if action == '1':
-            print('wobin swung wildly')
-            hp = hp-10
-            print()
-        elif action == '2':
-            print('wobin curled up')
-            print()
-        elif action == '3':
-            print('wobin cant spell')
-            print()
-        elif action == '4':
-            combat = False
-            print('wobin left')
-            print()
-        elif action == '5':
-            print('status')
-            print('hp= '+str(hp)+'/'+str(maxhp))
-            print('atk= '+str(attack))
-            print('def= '+str(defence))
-            print('spd= '+str(speed))
-            print()
-        else:
-            continue
-            print()
-        
-    print('wobin gained nothing')
-    hp = maxhp
-    print ('hp restored '+str(hp)+'/'+str(maxhp))
-    input()
+    make_an_enemy()
+    print(f"An {enemy.e_name} appeared")
+
+    input("enter to continue")
 
 
-print('1 for battle')
-b = input()
-if b == '1':
-    battle()
+def Main():
+    print("new adventure")
+    make_a_character()
+    print(player.p_name)
+    print("to adventure!\n\n\n")
 
+    while player.hp_cur > 0:
+        make_an_event()
+    
+
+Main()
