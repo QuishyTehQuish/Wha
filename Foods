@@ -1,14 +1,27 @@
 import random
 
 cuisines = {
-    1: ["Pasta", "Food2", "Fish"],
-    2: ["Bean", "Foodm"],
+    1: ["Pasta", "Food2", "Fish", "not food"],
+    2: ["Bean", "Foodm", "Tacos", "Enchaladas", ""],
     3: ["Rice", "Rice 3"],
     4: ["Sushi"]
 }
 
+sideDishes = {
+    1: ["Pasta", "Food2", "Fish", "not food"],
+    2: ["Bean", "Foodm", "Tacos", "Enchaladas", ""],
+    3: ["Rice", "Rice 3"],
+    4: ["Sushi"]
+}
+
+drinks = {
+    1: ["Coffee", "Coffee", "Fish Coffee", "not food"],  #hot drinks
+    2: ["Coffee", "Coffee", "", "", ""],  #cold drinks
+}
+
 all_cuisine_choices = [0, 1, 2, 3, 4]
 
+def foodOrdered
 while True:
     food_choice = int(input("Choose: 0 for All, 1 for Italian, 2 for Mexican, 3 for Chinese, 4 for Japanese: "))
     
@@ -24,7 +37,11 @@ while True:
     if food_acceptance.lower() == 'y':
     
         print(f"Your chosen food is {rand_food}!")
-        break
+
+    food_recipeRequired = input('Do you need a recipe? y/n')
+    if food_recipeRequired.lower() == 'y':
+        print("We are out of recipes! Scram! <(^u^)>")
+    break
 
 
 

@@ -1,6 +1,19 @@
 # wobin based text adventure
+import os
 
-skills = open(Class_list)
+
+class play:
+    name = "new play"
+
+
+import Class_list
+
+#from Class import player_choice
+
+
+quit()
+
+
 
 # start game, sets var
 import random
@@ -30,13 +43,13 @@ espeed = 1
 
 
 
-print(skill.skill_name)
+
 
 #enemy code
 def enemy():
     # slime
     ename = 'slime'
-    emaxhp = 30
+    emaxhp = 30 #big slime
     ehp = 30
     eattack = 5
     edefence = 5
