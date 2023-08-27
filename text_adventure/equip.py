@@ -17,5 +17,3 @@ class Equipment:
         # Add more equipment items as needed
     ]
 
-#def something():
-#    print('text')

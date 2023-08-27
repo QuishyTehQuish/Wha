@@ -1,5 +1,6 @@
 import random
 import equip
+import spells
 
 def gen_chest():
     num_items = random.randint(1, 2)
@@ -8,6 +9,12 @@ def gen_chest():
     }
     return chest
 
+def gen_magic():
+    num_items = random.randint(1, 2)
+    chest = {
+        "spells": [random.choice(spells.spell_book.spells) for _ in range(num_items)]
+    }
+    return chest
 
 def choice():
     player_choice = input("You find a chest! Do you want to open it? (yes/no): ")
@@ -17,6 +24,4 @@ def choice():
         for item in chest["items"]:
             print(item["name"], "-", item["description"])
 
-#choice()
-equip.something()
-#print(equip.variable)
+
