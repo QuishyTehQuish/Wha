@@ -3,31 +3,27 @@ import random
 
 
 import Class_list
+import Role_list
+import Enemy_list
+import Battle
 
 
 def make_a_character():
-    name_new = input("What's your name?")
-    import Role_list
-    job_choice = Role_list.player_choice()
+    name = input("What's your name?")
+    job = Role_list.player_choice()
     R = Role_list
     global player
-    player = Class_list.player(name_new,R.roles[job_choice]["name"],R.roles[job_choice]["attributes"]['maxhp'])
-    
+    player = Class_list.player(name,R.roles[job]["name"],R.roles[job]["attributes"]['maxhp'],R.roles[job]["attributes"]['attack'],R.roles[job]["attributes"]['defence'])
 
-import Enemy_list
 
 def make_an_enemy():
-    keylist = Enemy_list.enemy_data.keys()
-    new_enemy = random.randrange(0,len(Enemy_list.enemy_data))
+    e_list = Enemy_list.enemy_data
+    keylist = list(Enemy_list.enemy_data)
+    enemy_index = random.randrange(0,len(Enemy_list.enemy_data))
     global enemy
-    print('keylist')
-    print(keylist)
-    print('new_enemy')
-    print(new_enemy)
-    enemy = keylist[new_enemy]
-    #enemy = Class_list.enemy(new_enemy['e_name'],new_enemy['hp_max'],new_enemy['atk'],new_enemy['dfp'])
-    #print (enemy.e_name)
-make_an_enemy()
+    new_e = keylist[enemy_index]
+    enemy = Class_list.enemy(e_list[new_e]['name'],e_list[new_e]['hp_max'],e_list[new_e]['atk'],e_list[new_e]['dfp'])
+
 
 def make_an_item():
     pass
@@ -39,19 +35,15 @@ def make_an_event():
     random_event = random.randrange(0,len(event_list))
     match event_list[random_event]:
         case 'battle':
+            make_an_enemy()
             print("Conflict!!!")
-            battle()
+            Battle.random_battle(player,enemy)
         case 'no_event':
             print("There's nothing here.")
             input("enter to continue")
 
 
 
-def battle():
-    make_an_enemy()
-    print(f"An {enemy.e_name} appeared")
-
-    input("enter to continue")
 
 
 def Main():
