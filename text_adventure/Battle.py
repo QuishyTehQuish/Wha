@@ -56,3 +56,9 @@ def random_battle(player,enemy):
             #print(f"You took {dam}")
 
             turnspeed[1] = 0
+    
+    items = {'items' : ["item placeholder", "item placeholder"]}
+    money = {'money' : random.randrange(0,3)}
+    reward = {1:items,2:money}
+    print (reward)
+    return reward

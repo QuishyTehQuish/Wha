@@ -6,7 +6,12 @@ cat = 'cat'
 
 class player_class:
 
+    stats = []
     def __init__(self,m_name,job_new,hp_max_new,atk,dfp,spd):
+        self.level = 1
+        self.exp = 0
+        self.next_level = 1
+
         self.name = m_name
         self.job = job_new
         self.hp_max = hp_max_new
@@ -14,6 +19,9 @@ class player_class:
         self.atk = atk
         self.dfp = dfp
         self.spd = spd
+
+        self.stats = [self.level,self.exp,self.next_level,self.name,self.job,self.hp_max,self.hp_cur,self.atk,self.dfp,self.spd]
+    
 
 
 def make_a_character(Role_list):
