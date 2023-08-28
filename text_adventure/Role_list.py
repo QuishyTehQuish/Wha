@@ -34,12 +34,21 @@ roles = {
         "skill": ["Steal"],
         "attributes": {
             "maxhp": 7,
-            "hp": 5,
             "attack": 5,
             "defence": 1,
             "speed": 5
         }
     },
+    "5": {
+        "name": "Worlds weakest God",
+        "skill": ["Thoughts & Prayers"],
+        "attributes": {
+            "maxhp": 3,
+            "attack": 1,
+            "defence": 1,
+            "speed": 1
+        }
+    }
 }
 
 def use_skill(skill_name):
