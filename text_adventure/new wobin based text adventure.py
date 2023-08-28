@@ -46,12 +46,15 @@ def Main():
     print("new adventure")
     global player
     player = Class_list.make_a_character(Role_list)
-    print(player.p_name)
+    print(player.name)
     print("to adventure!\n\n\n")
 
     while player.hp_cur > 0:
-        make_an_event()
+        event_manager()
     print("You died")
+    restart = input("restart? y/n")
+    if restart == "y":
+        Main()
     
 
 Main()
