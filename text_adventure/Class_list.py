@@ -1,10 +1,10 @@
-
+import random
 
 #Class  skill_template:
 
 cat = 'cat'
 
-class player:
+class player_class:
 
     def __init__(self,m_name,job_new,hp_max_new,atk,dfp):
         self.p_name = m_name
@@ -15,7 +15,15 @@ class player:
         self.dfp = dfp
 
 
-class enemy:
+def make_a_character(Role_list):
+    name = input("What's your name?")
+    job = Role_list.player_choice()
+    R = Role_list
+    player = player_class(name,R.roles[job]["name"],R.roles[job]["attributes"]['maxhp'],R.roles[job]["attributes"]['attack'],R.roles[job]["attributes"]['defence'])
+    return player
+
+
+class enemy_class:
 
     def __init__(self,e_name,hp_max,atk,dfp):
         self.name = e_name
@@ -25,5 +33,11 @@ class enemy:
         self.dfp = dfp
 
 
-#n = player('name','jobs','hpmax')
-#print(n)
+def make_an_enemy(Enemy_list):
+    e_list = Enemy_list.enemy_data
+    keylist = list(Enemy_list.enemy_data)
+    enemy_index = random.randrange(0,len(Enemy_list.enemy_data))
+    global enemy
+    new_e = keylist[enemy_index]
+    enemy = enemy_class(e_list[new_e]['name'],e_list[new_e]['hp_max'],e_list[new_e]['atk'],e_list[new_e]['dfp'])
+    return enemy
