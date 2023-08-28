@@ -1,6 +1,6 @@
 import random
 import equip
-import spells
+import text_adventure.spells_list as spells_list
 
 def gen_chest():
     num_items = random.randint(1, 2)
@@ -12,7 +12,7 @@ def gen_chest():
 def gen_magic():
     num_items = random.randint(1, 2)
     chest = {
-        "spells": [random.choice(spells.spell_book.spells) for _ in range(num_items)]
+        "spells": [random.choice(spells_list.spell_book.spells) for _ in range(num_items)]
     }
     return chest
 
