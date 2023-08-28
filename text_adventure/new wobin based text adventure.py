@@ -15,7 +15,7 @@ import Event_list
 # game variables
 progression = 0
 player_inventory = []    
-player_money = 0
+player_money = int(0)
     
 
 
@@ -27,15 +27,38 @@ def make_an_item():
 
 
 def event_manager():
-    choices = ["1",'2','3']
-    choice = input("What will you do? 1:Adventure, 2:Manage inventory, 3:kill yourself")
+    choices = ["1",'2','3','4']
+    choice = input("What will you do? 1:Adventure, 2:Manage inventory, 3:Status, 4:die")
     if choice in choices:
         match choice:
             case '1':
-                Event_list.new_event(progression,player)
+                event = Event_list.new_event(progression,player)
+                #print(event)
+                #print(type(event))
+                if isinstance(event,dict):
+                    print('here')
+                    for i in event:
+                        if 'items' in event[i]:
+                            print('ite')
+                            gain_items = event[i]['items']
+                            for i in gain_items:
+                                print('yoa')
+                                global player_inventory
+                                player_inventory.append(i)
+                            print(f'You gained {gain_items}')
+                        elif 'money' in event[i]:
+                            gain_money = event[i]['money']
+                            global player_money 
+                            player_money += gain_money
+                            print(f'You gained {gain_money}')
+
             case '2':
                 print(f"Your inventory\n{player_inventory}\nYour money: {player_money}")
             case '3':
+                print(player.stats)
+                
+            case '4':
+                print('leathal damage')
                 player.hp_cur =  0
 
 
