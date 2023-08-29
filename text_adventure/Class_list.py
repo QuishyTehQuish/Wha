@@ -23,6 +23,9 @@ class player_class:
         self.stats = [self.level,self.exp,self.next_level,self.name,self.job,self.hp_max,self.hp_cur,self.atk,self.dfp,self.spd]
     
 
+    
+
+
 
 def make_a_character(Role_list):
     name = input("What's your name?")
@@ -34,13 +37,15 @@ def make_a_character(Role_list):
 
 class enemy_class:
 
-    def __init__(self,e_name,hp_max,atk,dfp,spd):
+    def __init__(self,e_name,hp_max,atk,dfp,spd,base_exp):
         self.name = e_name
         self.hp_max = hp_max
         self.hp_cur = hp_max
         self.atk = atk
         self.dfp = dfp
         self.spd = spd
+
+        self.exp = base_exp
 
 
 def make_an_enemy(Enemy_list):
@@ -49,5 +54,7 @@ def make_an_enemy(Enemy_list):
     enemy_index = random.randrange(0,len(Enemy_list.enemy_data))
     global enemy
     new_e = keylist[enemy_index]
-    enemy = enemy_class(e_list[new_e]['name'],e_list[new_e]['hp_max'],e_list[new_e]['atk'],e_list[new_e]['dfp'],e_list[new_e]['dfp'])
+    enemy = enemy_class(e_list[new_e]['name'],e_list[new_e]['hp_max'],
+                        e_list[new_e]['atk'],e_list[new_e]['dfp'],e_list[new_e]['spd'],
+                        e_list[new_e]['base_exp'])
     return enemy
