@@ -10,8 +10,6 @@ import Event_list
 
 # python fuckin sucks
 def clamp(n,min,max):
-    e = [n,min,max]
-    print(e)
     if min < n < max:
         return n
     elif n <= min:
@@ -61,17 +59,16 @@ def event_manager():
                             gain_money = event[i]['money']
                             global player_money 
                             player_money += gain_money
+                            text = ("you gained"+str(gain_money)+'money')
                             print(f'You gained {gain_money} money')
                         elif 'exp' in event[i]:
                             gain_exp = event[i]['exp']                            
                             player.exp += gain_exp
                             print(f'You gained {gain_exp} exp')
                             if player.exp >= player.next_level:
-                                player.level += 1
-                                player.exp = clamp(player.next_level - player.exp,0,player.next_level)
-                                print(player.exp)
-                                player.next_level = int(player.next_level * 2)
-                                print(f'Your now level {player.level}')
+                                #global player
+                                player = Class_list.level_up(player)
+
 
 
             case '2':

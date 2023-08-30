@@ -1,21 +1,21 @@
 import random
 
 
-def damage_formula(target,hp_cur,atk,dfp):
+def damage_formula(target:object,hp_cur:int,atk:int,dfp:int):
     damage = (atk - dfp)
     #hp_cur -= damage
     print(f'{target} took {damage} damage!!! and has {hp_cur-damage} remaining')
     return damage
 
 
-def turn_order(p_speed,p_atb,e_speed,e_atb):
+def turn_order(p_speed:int,p_atb:int,e_speed:int,e_atb:int):
     print(f"psped = {p_atb}, esped = {e_atb}")
     ps = p_atb + p_speed
     es = e_atb + e_speed
     return [ps,es]
 
     
-def random_battle(player,enemy):
+def random_battle(player:object,enemy:object):
     print(f"A {enemy.name} appeared")
     turnspeed = [player.spd,enemy.spd]
 
