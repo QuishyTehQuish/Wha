@@ -61,6 +61,6 @@ def random_battle(player:object,enemy:object):
     exp = {'exp' : enemy.exp}
     items = {'items' : ["item placeholder", "item placeholder"]}
     money = {'money' : random.randrange(0,3)}
-    reward = {1:items,2:money,3:exp}
+    reward = {exp,items,money}
     print (reward)
     return reward
